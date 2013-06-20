@@ -11,7 +11,7 @@ if (!isset($_SESSION['username'])) {
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
     <head>
-        <title>PhotoWall</title>
+        <title>Image Gallery</title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
         <link rel="stylesheet" href="js/fancybox/jquery.fancybox-1.3.1.css" type="text/css" media="all" />
@@ -31,7 +31,7 @@ if (!isset($_SESSION['username'])) {
             <div id="header">
                 
                 <div id="log">
-                    <p><a href="Logout.php">Logout</a></p>
+                    <p><a id="pages" href="Logout.php">Logout</a></p>
                 </div>
                 
                 <div id="navigation">
@@ -56,7 +56,11 @@ if (!isset($_SESSION['username'])) {
                                     <td><span id="errortitle" class="formError"></span></td>
                                 </tr>
                                 <tr>
-                                    <td>Category Name:</td><td><input type="text" name = "category_name"></td>
+                                    <td>Category Name:</td><td><select name="select">
+                                        <?php
+                                        include_once 'DropDown.php';
+                                        ?>                           
+                                    </select></td>
                                     <td><span id="errorcategory" class="formError"></span></td>
                                 </tr>
                                 <tr>

@@ -1,19 +1,21 @@
 <?php
+
 include_once 'Connection.php';
-$query = "SELECT *
-          FROM category_tb
+
+$query = "SELECT * FROM category_tb
           ORDER BY category_id";
 
 $result = mysql_query($query);
 
-echo '<option>Select</option>';
+echo '<option>All Categories</option>';
 
-while($row_list=  mysql_fetch_assoc($result)){
+while ($row_list = mysql_fetch_assoc($result)) {
 
-  $name =  $row_list['category_name'];
+    $title = $row_list['category_name'];
 
-echo '<option value="'.$name.'">'.$name.'</option>';
+    echo "<option";
+    if ($title == $category_name) {
+        echo " selected='selected'";
+    } echo ">$title</option>";
 }
-echo '<option>None</option>';
-
 ?>

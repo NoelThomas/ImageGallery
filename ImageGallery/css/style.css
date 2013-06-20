@@ -56,11 +56,12 @@ textarea {
     display:inline;
 }
 .shell {
-    height: 600px;
+    height: 620px;
     width:920px;
     margin:0 auto;
 }
 #header {
+    margin-left: 27px;
     padding-top: 20px;
 }
 #navigation ul {
@@ -192,12 +193,14 @@ table{
     float:left;
     margin-left: 216px;
 }
+#subfooter{
+    display:none;
+}
 #footer .rf {
 
     float:right;
     margin-right: 216px;
 }
-
 #foter, #foter a {
     color:#4a4a4a;
     margin-top: 5%;
@@ -212,60 +215,46 @@ table{
     white-space:nowrap;
 }
 #foter .lf {
-
     float:left;
 }
 #foter .rf {
 
     float:right;
 }
-
 #content{
     width: 500px;
     margin-top: 150px;
-    margin-left:337px;
-
-    
-    
+    margin-left:337px; 
 }
-
 #edit{
     height: 215px;
 }
-
 #log{
     margin-top: 5px;
     height :30px;
     text-align: right;
 }
-
 #edit_link{
     
     margin-top: 20px;
     margin-left: 82px;
 }
-
 #dropdown{
     float: left;
-    width:663px;
+    width:612px;
 }
-
 #login{
     float: right;
     width:230px;
     margin-top: 10px;
     
 }
-
 .pagination{
     height: 30px;
     padding-top:472px;
-    margin-left: 430px;
-
+    margin-left: 402px;
     width: 500px;
-
 }
-
 #pages{
     background-color: white;
     border-color: #0252AA;
@@ -278,8 +267,12 @@ table{
     padding-right: 14px;
     font-weight: bold;
 }
-
 span{
     color: red;
+}
+#errorserver{
+    margin-left: 1063px;
+    margin-top: 125px;
+    position: absolute;       
 }
 

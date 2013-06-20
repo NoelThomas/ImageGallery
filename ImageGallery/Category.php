@@ -1,7 +1,7 @@
 <?php
  $flag=1;
- $category_name1= $_POST["select"];
- if($category_name1=="Select"||$category_name1=="None")
+ $category_name= $_POST["select"];
+ if($category_name=="Select"||$category_name=="None")
  {
      $flag=0;  
  }
