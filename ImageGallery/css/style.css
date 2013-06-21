@@ -56,7 +56,7 @@ textarea {
     display:inline;
 }
 .shell {
-    height: 620px;
+    height: 644px;
     width:920px;
     margin:0 auto;
 }
@@ -177,7 +177,7 @@ table{
 }
 #footer, #footer a {
     color:#4a4a4a;
-    margin-top: 5%;
+    margin-top: 8%;
 }
 #footer a:hover {
     text-decoration:none;

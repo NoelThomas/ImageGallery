@@ -1,0 +1,20 @@
+user@qbpc:~$ cd /var/www/
+user@qbpc:/var/www$ nano First.php 
+user@qbpc:/var/www$ 
+user@qbpc:/var/www$ 
+user@qbpc:/var/www$ 
+user@qbpc:/var/www$ 
+user@qbpc:/var/www$ 
+user@qbpc:/var/www$ 
+user@qbpc:/var/www$ 
+user@qbpc:/var/www$ mkdir html
+mkdir: cannot create directory `html': Permission denied
+user@qbpc:/var/www$ sudo mkdir html
+[sudo] password for user: 
+user@qbpc:/var/www$ sudo -i
+root@qbpc:~# chown user:www-data /var/www/html/
+root@qbpc:~# chown -R user:www-data /var/www/html/
+root@qbpc:~# chown -R user:www-data /var/www/html/
+root@qbpc:~# chown -R user:www-data /var/www/
+root@qbpc:~# 
+

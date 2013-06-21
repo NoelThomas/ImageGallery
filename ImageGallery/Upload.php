@@ -3,49 +3,52 @@
 session_start();
 $name = $_SESSION['username'];
 
-//Connect to the database
+// Connect to the database
 include_once 'Connection.php';
 
 //This is the directory where images will be saved 
 $target = "images/";
 $target = $target . basename($_FILES['photo']['name']);
 
-//This gets all the other information from the form 
-$title = $_POST['title'];
-$category_name = $_POST['select'];
+// This gets all the other information from the form 
+$title = mysql_real_escape_string($_POST['title']);
+$category_name = mysql_real_escape_string($_POST['select']);
 $pic = ($_FILES['photo']['name']);
 
-if($title==''||$category_name==''||$pic==''){
-echo 'Fill the fields';
+if (($_FILES['photo']['type'] != 'image/jpeg')&& ($_FILES['photo']['type'] != 'image/gif') && ($_FILES['photo']['type'] != 'image/png') && ($_FILES['photo']['type'] != 'image/bmp') && ($_FILES['photo']['type'] != 'image/jpg'))
+{
+$server_message = 'Not an Image';
+header('Location: UserHome.php?server=' . $server_message . '');
 }
 
- else {
-//fetching the user id
-$user_id = mysql_query("select user_id from user_tb where user_name='$name'");
-$user = mysql_fetch_array($user_id);
-$real_id = $user['user_id'];
-
-//fetching the category id
-$category_id = mysql_query("select category_id from category_tb where category_name='$category_name'");
-$category = mysql_fetch_array($category_id);
-$real_category = $category['category_id'];
-
-//Writes the information to the database 
-mysql_query("INSERT INTO image_tb (user_id,title,category_id,image) VALUES ('$real_id','$title','$real_category','$pic')");
-
-//Writes the photo to the server 
-if (move_uploaded_file($_FILES['photo']['tmp_name'], $target)) {
-    //if its all ok 
-    echo "The file " . basename($_FILES['uploadedfile']['name']) . " has been uploaded, and your information has been added to the directory";
-    header('Location: UserHome.php');
-
+// Server side validations
+if ($title == '' || $category_name == '') {
+    $server_message = 'Fill the fields';
+    header('Location: UserHome.php?server=' . $server_message . '');
 } else {
+// Fetching the user id
+    $data = mysql_query("select user_id from user_tb where user_name='$name'");
+    $user = mysql_fetch_array($data);
+    $user_id = $user['user_id'];
 
-    //Gives an error if its not 
-    echo "Sorry, there was a problem uploading your file.";
-    include 'UserHome.php';
-    exit();
-}
-}
+// Fetching the category id
+    $data_one = mysql_query("select category_id from category_tb where category_name='$category_name'");
+    $category = mysql_fetch_array($data_one);
+    $category_id = $category['category_id'];
 
+// Writes the information to the database 
+    mysql_query("INSERT INTO image_tb (user_id,title,category_id,image) VALUES ('$user_id','$title','$category_id','$pic')");
+
+// Writes the photo to the server 
+    if (move_uploaded_file($_FILES['photo']['tmp_name'], $target)) {
+        // If its all ok 
+        $server_message = "Success";
+        header('Location:Success.php');
+    } else {
+
+        // Gives an error if any 
+        $server_message = "Sorry, there was a problem uploading your file.";
+        header('Location: UserHome.php?server_message=' . $server_message . '');
+    }
+}
 ?>

@@ -11,10 +11,15 @@ body {
     background:url(images/bg.jpg) repeat center 0;
     padding-bottom:10px;
 }
+h3{
+    color: red;
+   
+}
 a {
     color:#0252aa;
     text-decoration:none;
     cursor:pointer;
+    font-size: 15px;
 }
 a:hover {
     text-decoration:underline;
@@ -51,10 +56,13 @@ textarea {
     display:inline;
 }
 .shell {
+    height: 644px;
     width:920px;
     margin:0 auto;
 }
 #header {
+    margin-left: 27px;
+    padding-top: 20px;
 }
 #navigation ul {
     list-style:none outside none;
@@ -112,6 +120,13 @@ h1#logo a {
     height:37px;
     background:url(images/logo.png) no-repeat 0 0;
 }
+#upload{
+    margin-top: 10px;
+}
+table{
+    color: yellow;
+}
+
 #main {
     padding-top:27px;
     height:100%;
@@ -162,7 +177,7 @@ h1#logo a {
 }
 #footer, #footer a {
     color:#4a4a4a;
-    margin-top: 5%;
+    margin-top: 8%;
 }
 #footer a:hover {
     text-decoration:none;
@@ -176,15 +191,88 @@ h1#logo a {
 #footer .lf {
 
     float:left;
+    margin-left: 216px;
+}
+#subfooter{
+    display:none;
 }
 #footer .rf {
 
     float:right;
+    margin-right: 216px;
 }
+#foter, #foter a {
+    color:#4a4a4a;
+    margin-top: 5%;
+}
+#foter a:hover {
+    text-decoration:none;
+}
+#foter p {
+    margin:0;
+    padding:0;
+    line-height:normal;
+    white-space:nowrap;
+}
+#foter .lf {
+    float:left;
+}
+#foter .rf {
 
+    float:right;
+}
+#content{
+    width: 500px;
+    margin-top: 150px;
+    margin-left:337px; 
+}
+#edit{
+    height: 215px;
+}
+#log{
+    margin-top: 5px;
+    height :30px;
+    text-align: right;
+}
+#edit_link{
+    
+    margin-top: 20px;
+    margin-left: 82px;
+}
+#dropdown{
+    float: left;
+    width:612px;
+}
+#login{
+    float: right;
+    width:230px;
+    margin-top: 10px;
+    
+}
 .pagination{
+    height: 30px;
     padding-top:472px;
-    margin-left: 430px;
-    width: 0%;
-
+    margin-left: 402px;
+    width: 500px;
 }
+#pages{
+    background-color: white;
+    border-color: #0252AA;
+    border-style: dotted solid;
+    border-width: 3px;
+    font-size: 13px;
+    height: 30px;
+    padding-bottom: 2px;
+    padding-left: 14px;
+    padding-right: 14px;
+    font-weight: bold;
+}
+span{
+    color: red;
+}
+#errorserver{
+    margin-left: 1063px;
+    margin-top: 125px;
+    position: absolute;       
+}
+

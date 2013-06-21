@@ -2,21 +2,28 @@
 
 // Check, if username session is NOT set then this page will jump to login page
 $flag=0;
+// Setting the limit of images per page
 $limit = 8;
+
+//checking whether the url contains page number
 if (isset($_GET["page"])) {
     $page = $_GET["page"];
 } else {
     $page = 1;
 };
+
 $start_from = ($page - 1) * $limit;
 
 if (!isset($_SESSION['username'])) {
-
+// Calling the connection
     include_once 'Connection.php';
+    
     $data = mysql_query("SELECT * FROM image_tb i
                          JOIN category_tb c ON i.category_id = c.category_id
-                         JOIN user_tb u ON i.user_id = u.user_id ORDER BY title ASC LIMIT $start_from, $limit") or die(mysql_error());
+                         JOIN user_tb u ON i.user_id = u.user_id ORDER BY title 
+                         ASC LIMIT $start_from, $limit") or die(mysql_error());
 
+// Fetching the data
     while ($info = mysql_fetch_array($data)) {
     echo'<div class="image-box">
          <div class="holder"> <span class="drag-pointer">&nbsp;</span>
@@ -28,25 +35,34 @@ if (!isset($_SESSION['username'])) {
          </div>';
 }
 
+// Query for pagination
 $sql = "SELECT * FROM image_tb";
 $rs_result = mysql_query($sql);
 $total_records = mysql_num_rows($rs_result);
 $total_pages = ceil($total_records / $limit);
+
+// Setting the page link
 $pagLink = "<div class='pagination'>";
+
 for ($i = 1; $i <= $total_pages; $i++) {
-    $pagLink .= "<a id='pages' href='index.php?page=" . $i . "&flag=".$flag."'>" . $i . "</a>";
+    $pagLink .= "<a id='pages' href='index.php?page=" . $i . "'>" . $i . "</a>";
 };
+
 echo $pagLink . "</div>";
     
 } else {
-
+// Condition for session presence    
+    
+// Calling the connection
     include_once 'Connection.php';
-    $title = $_SESSION['username'];
+    
+    $name = $_SESSION['username'];
     $data = mysql_query("SELECT * FROM image_tb i
     JOIN category_tb c ON i.category_id = c.category_id
-    JOIN user_tb u ON i.user_id = u.user_id where user_name='$title'
+    JOIN user_tb u ON i.user_id = u.user_id where user_name='$name'
     ORDER BY title ASC LIMIT $start_from, $limit") or die(mysql_error());
     
+// Fetching the data
      while ($info = mysql_fetch_array($data)) {
          
     echo'<div class="image-box">
@@ -63,18 +79,22 @@ echo $pagLink . "</div>";
            
 }
 
-
-$sql = "SELECT *
-FROM image_tb i
+// Query for pagination
+$sql = "SELECT * FROM image_tb i
 JOIN category_tb c ON i.category_id = c.category_id
-JOIN user_tb u ON i.user_id = u.user_id where user_name='$title'";
+JOIN user_tb u ON i.user_id = u.user_id where user_name='$name'";
+
 $rs_result = mysql_query($sql);
 $total_records = mysql_num_rows($rs_result);
 $total_pages = ceil($total_records / $limit);
+
+// Setting the page link
 $pagLink = '<div class="pagination">';
+
 for ($i = 1; $i <= $total_pages; $i++) {
     $pagLink .= "<a id='pages' href='UserHome.php?page=" . $i . "&$flag'>" . $i . "</a>";
 };
+
 echo $pagLink . "</div>";
      
 }

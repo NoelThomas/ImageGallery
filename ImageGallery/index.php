@@ -3,6 +3,9 @@ session_start();
 if (isset($_SESSION['username'])) {
     header('Location: UserHome.php');
 }
+$flag = $_GET['flag'];
+$title1 = $_GET['title1'];
+$category_name = $_GET['category_name'];
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -38,17 +41,18 @@ if (isset($_SESSION['username'])) {
                                    type="password" id="users_pass"></input></td>
                         <tr><td colspan="2"><span id="errorpassword" class="formError"></span></td></tr>
 
-                            <?php
-                        if($errormessage=='Invalid user name or password'){
-                        echo'<tr><td colspan="2"><span id="errorserver" class="formError">'.$errormessage.'</span></td></tr>';
+                        <?php
+                        $error = $_GET['error'];
+                        if ($error == 'Invalid user name or password') {
+                            echo'<tr><td colspan="2"><span id="errorpassword" class="formError">' . $error . '</span></td></tr>';
                         }
                         ?>
-                        
+
                     </tr>
                     <tr>
                         <td></td>
-                        <td><input type="submit" value="Submit" />
-                            <input type="reset" value="Reset"/></td>
+                        <td><input type="submit" value="Submit" /></td>
+
                     </tr>
                 </table>
             </form>
@@ -67,12 +71,12 @@ if (isset($_SESSION['username'])) {
                 </div>
                 <div class="cl">&nbsp;</div>
                 <div id="search">
-                    <form method="post" action="Search.php" onsubmit="return check_search()" >
+                    <form method="post" action="Title.php" onsubmit="return check_search()" >
                         <table>
                             <tr><td>
                                     <input type="text" 
                                            name="title" id="title" placeholder="Search"></td>
-                                
+
                                 <td>
                                     <select name="select">
                                         <?php
@@ -88,29 +92,19 @@ if (isset($_SESSION['username'])) {
 
                 <div class="cl">&nbsp;</div>
             </div>
-            
+
             <div id="main">
 
                 <?php
-                $flag = $_GET['flag'];
-                if ($flag == 0) {
+                if ($flag == 1) {
+                    include_once 'Title.php';
+                } else {
                     include_once 'Gallery.php';
                 }
-                
-                if ($flag == 1) {
-                    include_once 'CategoryName.php';
-                }
-                
-                if ($flag == 2) {
-                    include_once 'Title.php';
-                }
-                
                 ?>
-                <div id="subfooter"width="100%">dfdfvxvcxcvxcvcv</div>
-            </div>
 
+            </div>
         </div>
-        
         <div id="footer">
             <p class="lf">Copyright &copy; 2013 <a href="#">Image Gallery</a> - All Rights Reserved</p>
             <p class="rf"><a href="#">Image Gallery for everyone</a> by <a href="#">Noel.com</a></p>

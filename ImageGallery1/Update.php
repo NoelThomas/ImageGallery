@@ -1,31 +1,35 @@
 <?php
-$title0 = $_POST["title"];
-$category_name20 = $_POST["category"];
-$image_id=$_POST["id"];
+
+// Getting values fron form
+$title = $_POST["title"];
+$category_name = $_POST["select"];
+$image_id = $_POST["id"];
 
 // Connect to the database
 include_once 'Connection.php';
 
-$title = mysql_real_escape_string($title0);
-$category_name2 = mysql_real_escape_string($category_name20);
+// Blocking sql injection
+$real_title = mysql_real_escape_string($title);
+$real_category_name = mysql_real_escape_string($category_name);
 
-if (empty($title) && empty($category_name2)) //This is the way to check validations using PHP code but here we are using JS validations so it is not necessary
- {
- echo " Fill ";
- exit();
- }
- else {
-     
+//Server side validation
+if (empty($real_title) || $real_category_name == "All Categories") {
+    echo " Fill the fields";
+    header('Location: Edit.php?id= ' . $image_id . '');
+} else {
 
-$sql="select category_id from category_tb where category_name='$category_name2'";
-$result=mysql_query($sql);
+    $data = mysql_query("select * from category_tb 
+                         where category_name='$real_category_name'");
 
-$sql1="update image_tb set title = '$title',
-category_id='$result' WHERE  image_id='$image_id'";
+// Fetching the data
+    $info = mysql_fetch_array($data);
+    $result = $info['category_id'];
 
-echo $image_id."fhfghfgh";
-echo $category_name2."gjghjghj";
-        echo $result."fchfh";
+//Update query
+    $sql1 = mysql_query("update image_tb set title = '$real_title',
+                   category_id='$result' WHERE  image_id='$image_id'");
 
- }
+//jump to Edit page
+    header('Location: Edit.php?id= ' . $image_id . '');
+}
 ?>

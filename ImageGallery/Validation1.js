@@ -51,7 +51,7 @@ function check_upload() {
         return false;
     }
     
-    if (select == "Select") {
+    if (select == "All Categories") {
         $('#errorcategory').html('Enter the category name');
         return false;
     }
@@ -77,7 +77,7 @@ function check_update() {
 
     }
     
-    if (category == "Select") {
+    if (category == "All Categories") {
         $('#errorcategory').html('Select the category name');
         return false;
     }
