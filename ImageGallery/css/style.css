@@ -201,26 +201,6 @@ table{
     float:right;
     margin-right: 216px;
 }
-#foter, #foter a {
-    color:#4a4a4a;
-    margin-top: 5%;
-}
-#foter a:hover {
-    text-decoration:none;
-}
-#foter p {
-    margin:0;
-    padding:0;
-    line-height:normal;
-    white-space:nowrap;
-}
-#foter .lf {
-    float:left;
-}
-#foter .rf {
-
-    float:right;
-}
 #content{
     width: 500px;
     margin-top: 150px;
@@ -276,3 +256,12 @@ span{
     position: absolute;       
 }
 
+#success_image{
+margin-left: 37%;
+    margin-top: 12%;
+}
+
+#success{
+    color: red;
+    text-align:center;
+}

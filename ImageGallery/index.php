@@ -13,13 +13,9 @@ $category_name = $_GET['category_name'];
         <title>Image Gallery</title>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
-        <link rel="stylesheet" href="js/fancybox/jquery.fancybox-1.3.1.css" type="text/css" media="all" />
-        <script src="js/jquery-1.4.2.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="js/jquery-ui-1.8.5.custom.min.js" type="text/javascript" charset="utf-8"></script>
-        <script src="js/jquery.easing.1.3.js" type="text/javascript" charset="utf-8"></script>
-        <script src="js/fancybox/jquery.fancybox-1.3.1.js" type="text/javascript" charset="utf-8"></script>
-        <script src="js/fancybox/jquery.mousewheel-3.0.2.pack.js" type="text/javascript" charset="utf-8"></script>
-        <script src="js/js-func.js" type="text/javascript" charset="utf-8"></script>
+        <link href="css/lightbox.css" rel="stylesheet" />
+            <script src="js/jquery-1.7.2.min.js"></script>
+            <script src="js/lightbox.js"></script>
         <!--[if IE 6]><link rel="stylesheet" href="css/ie6.css" type="text/css" media="all" /><![endif]-->
         <script type="text/javascript" src="Validation1.js"></script>
     </head>
@@ -62,10 +58,6 @@ $category_name = $_GET['category_name'];
                 <div id="navigation">
                     <ul id="sortable">
                         <li><a href="index.php"><span>Home</span></a></li>
-                        <li><a href="#"><span>Category</span></a></li>
-                        <li><a href="#"><span>Random Button</span></a></li>
-                        <li><a href="#"><span>Random Button</span></a></li>
-                        <li><a href="#"><span>Random Button</span></a></li>
                     </ul>
 
                 </div>

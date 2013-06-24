@@ -3,10 +3,9 @@
 // Calling the connection
 include_once 'Connection.php';
 
-$data = mysql_query("SELECT *
-                    FROM image_tb i
+$data = mysql_query("SELECT * FROM image_tb i
                     JOIN category_tb c ON i.category_id = c.category_id
-                    where image_id='$image_id'");
+                    where image_id='$image_id'")or die(mysql_error());
 // Fetching the data
 $info = mysql_fetch_array($data);
 $category_name = $info['category_name'];

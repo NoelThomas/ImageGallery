@@ -19,7 +19,8 @@ if (empty($name) && empty($password)) {
 }
 
 $sql = "SELECT user_name,user_password FROM user_tb 
-      WHERE user_name='$myusername' and user_password='$mypassword'";
+        WHERE user_name='$myusername' and user_password='$mypassword'"
+        or die(mysql_error());
 
 $result = mysql_query($sql);
 

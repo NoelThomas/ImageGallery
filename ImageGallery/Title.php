@@ -33,15 +33,17 @@ $category_name = $_GET['category_name'];
 // Check condition for category select
 if ($category_name == 'All Categories') {
     $data = mysql_query("select * from image_tb i 
-                    join category_tb c on i.category_id=c.category_id
-                    JOIN user_tb u ON i.user_id = u.user_id
-                    where title LIKE '%$title1%' ORDER BY title ASC LIMIT $start_from, $limit") or die(mysql_error());
+                         join category_tb c on i.category_id=c.category_id
+                         JOIN user_tb u ON i.user_id = u.user_id
+                         where title LIKE '%$title1%' ORDER BY title ASC LIMIT $start_from, $limit")
+                         or die(mysql_error());
 } else {
 // Filter search by category
     $data = mysql_query("select * from image_tb i 
-                    join category_tb c on i.category_id=c.category_id
-                    JOIN user_tb u ON i.user_id = u.user_id
-                    where title LIKE'%$title1%' and category_name = '$category_name' ORDER BY title ASC LIMIT $start_from, $limit") or die(mysql_error());
+                         join category_tb c on i.category_id=c.category_id
+                         JOIN user_tb u ON i.user_id = u.user_id
+                         where title LIKE'%$title1%' and category_name = '$category_name' ORDER BY title ASC LIMIT $start_from, $limit") 
+                         or die(mysql_error());
 }
 
 //Fetching the data
@@ -58,15 +60,16 @@ while ($info = mysql_fetch_array($data)) {
 // Check condition for category select in pagination
 if ($category_name == 'All Categories') {
     $sql = "select * from image_tb i 
-                    join category_tb c on i.category_id=c.category_id
-                    JOIN user_tb u ON i.user_id = u.user_id
-                    where title LIKE '%$title1%'";
+            join category_tb c on i.category_id=c.category_id
+            JOIN user_tb u ON i.user_id = u.user_id
+            where title LIKE '%$title1%'" or die(mysql_error());
 } else {
     // Filter search by category in pagination
     $sql = "select * from image_tb i 
-                    join category_tb c on i.category_id=c.category_id
-                    JOIN user_tb u ON i.user_id = u.user_id
-                    where title LIKE '%$title1%' and category_name = '$category_name'";
+            join category_tb c on i.category_id=c.category_id
+            JOIN user_tb u ON i.user_id = u.user_id
+            where title LIKE '%$title1%' and category_name = '$category_name'"
+            or die(mysql_error());
 }
 
 $rs_result = mysql_query($sql);

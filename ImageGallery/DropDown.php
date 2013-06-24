@@ -5,14 +5,16 @@ include_once 'Connection.php';
 
 $query = "SELECT * FROM category_tb ORDER BY category_id";
 
-if (!mysql_query($query, $con)) {
+try {
 
-    die('Error: ' . mysql_error());
+    mysql_query($query, $con);
+} catch (Exception $e) {
+    echo "There is a technical problem";
 }
 
 $result = mysql_query($query);
 
-// Setting the options
+// Setting the optionsto dropdown
 echo '<option>All Categories</option>';
 
 // Fetching the values 

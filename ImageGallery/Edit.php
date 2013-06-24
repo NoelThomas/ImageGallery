@@ -33,10 +33,6 @@ $image_id = $_GET['id'];
                 <div id="navigation">
                     <ul id="sortable">
                         <li><a href="UserHome.php"><span> Home </span></a></li>
-                        <li><a href="#"><span>Contact Me</span></a></li>
-                        <li><a href="#"><span>Random Button</span></a></li>
-                        <li><a href="#"><span>Random Button</span></a></li>
-                        <li><a href="#"><span>Random Button</span></a></li>
                     </ul>
                 </div>
 

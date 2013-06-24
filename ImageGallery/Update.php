@@ -19,7 +19,8 @@ if (empty($real_title) || $real_category_name == "All Categories") {
 } else {
 
     $data = mysql_query("select * from category_tb 
-                         where category_name='$real_category_name'");
+                         where category_name='$real_category_name'")
+                         or die(mysql_error());
 
 // Fetching the data
     $info = mysql_fetch_array($data);
@@ -27,9 +28,12 @@ if (empty($real_title) || $real_category_name == "All Categories") {
 
 //Update query
     $sql1 = mysql_query("update image_tb set title = '$real_title',
-                   category_id='$result' WHERE  image_id='$image_id'");
+                         category_id='$result' WHERE  image_id='$image_id'")
+                         or die(mysql_error());
 
 //jump to Edit page
-    header('Location: Edit.php?id= ' . $image_id . '');
+//$server_message = "Success";
+        header('Location:Success.php');
+//    header('Location: Edit.php?id= ' . $image_id . '');
 }
 ?>

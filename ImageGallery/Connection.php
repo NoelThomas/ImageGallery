@@ -1,14 +1,11 @@
 <?php
 
+try {
 // Connecting to database
-$con = mysql_connect("localhost", "root", "root");
-
-// Make sure we connected succesfully
-if (!$con) {
-    die('Connection Failed' . mysql_error());
-}
-
+    $con = mysql_connect("localhost", "root", "root");
 // Select the database to use
-mysql_select_db("image_gallery", $con);
-
+    mysql_select_db("image_gallery", $con);
+} catch (Exception $e) {
+    echo ('An error has occured');
+}
 ?>
